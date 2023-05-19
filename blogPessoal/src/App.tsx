@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './componentes/estaticos/navbar/Navbar';
+import Navbar from './components/statics/navbar/Navbar';
 import Home from './paginas/home/Home';
-import Footer from './componentes/estaticos/footer/Footer';
+import Footer from './components/statics/footer/Footer';
 import './App.css'
 import Login from './paginas/login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUruario';
 
 
 function App() {
