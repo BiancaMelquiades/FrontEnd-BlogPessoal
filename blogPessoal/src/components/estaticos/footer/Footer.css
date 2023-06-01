@@ -1,0 +1,20 @@
+.box1 {
+    background-color: #01605B;
+    width: 1350px;
+    min-height: 100px;
+}
+
+.redes {
+    font-size: 30px !important; 
+    color: #F3F0F1; 
+}
+
+.box2 {
+    background-color: #011613; 
+    width: 1350px;
+    min-height: 10px;
+}
+
+.textos {
+    color: #F3F0F1;
+}

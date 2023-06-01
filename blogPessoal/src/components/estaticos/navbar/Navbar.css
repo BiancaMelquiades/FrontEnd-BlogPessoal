@@ -1,0 +1,12 @@
+.text-decorator-none{
+    text-decoration: none !important;
+}
+
+.cursor {
+    cursor: pointer;
+    color: white; 
+}
+
+.customAppBar {
+    background-color: #01605B !important;
+}

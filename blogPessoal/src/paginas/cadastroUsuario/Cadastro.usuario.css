@@ -1,0 +1,21 @@
+.imagem {
+    background-image: url("https://ik.imagekit.io/biancamelquiades/Blog_Pessoal/runScrum.png?updatedAt=1684936133541");
+    background-repeat: no-repeat; 
+    width: 100vh; 
+    min-height: 100vh; 
+    background-size: cover; 
+    background-position: center;
+}
+
+.textos1 {
+    font-weight: bold !important;
+}
+
+.text-decorator-none{
+    text-decoration: none !important;
+}
+
+.btnCancelar{
+    margin-right: 20px !important;
+
+}

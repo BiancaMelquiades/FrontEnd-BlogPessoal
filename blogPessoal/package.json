@@ -1,5 +1,5 @@
 {
-  "name": "blogpessoalfront",
+  "name": "blogpessoal",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,15 +12,17 @@
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^4.12.3",
+    "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^0.21.4",
     "react": "^17",
     "react-dom": "^17",
-    "react-router-dom": "^6.11.1",
+    "react-router-dom": "^6.11.2",
+    "react-toastify": "^9.1.3",
     "react-use-localstorage": "^3.5.3"
   },
   "devDependencies": {

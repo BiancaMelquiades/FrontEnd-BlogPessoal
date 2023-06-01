@@ -1,28 +1,29 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import './Login.css';
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import { Grid, Box, Typography, TextField, Button } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
-import { UsuarioLogin } from '../../model/UsuarioLogin';
 import useLocalStorage from 'react-use-localstorage';
+import { Repeat } from '@material-ui/icons';
+import UserLogin from '../../models/UserLogin';
 import { login } from '../../services/Service';
 
 function Login() {
+    const navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token'); //faz o controle do token dentro do localStorage
+    const [userLogin, setUserLogin] = useState<UserLogin>({
 
-    let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
-    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
-        id: 0,
-        nome: '',
+        id: 0,          //valores zerados, pois não foi feito nenhum cadastro/login
         usuario: '',
         senha: '',
-        foto: '',
         token: ''
-    })
+    }
+    )
 
-    function updateModel(event: ChangeEvent<HTMLInputElement>) {
-        setUsuarioLogin({
-            ...usuarioLogin,
-            [event.target.name]: event.target.value
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
         })
     }
 
@@ -35,46 +36,73 @@ function Login() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
-            await login(`/usuarios/logar`, usuarioLogin, setToken)
+            await login(`/usuarios/logar`, userLogin, setToken)
 
             alert('Usuário logado com sucesso!');
         } catch (error) {
-            alert('Dados do usuário inconsistentes. Erro ao logar!');
+            alert('Dados do usuário inconsistentes. Erro ao logar!')
         }
     }
 
+
+
     return (
         <>
-            <Grid container direction={'row'} justifyContent={'center'} alignItems={'center'}>
-                <Grid item xs={6} alignItems={'center'}>
-                    <Box paddingX={20}>
+            <Grid container direction="row" justifyContent="center" alignItems="center" className="imagem">
+                <Grid alignItems="center" item xs={8}>
+                    <Box paddingX={20} className="formulario" justifyContent="center">
                         <form onSubmit={onSubmit}>
-                            <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{ fontWeight: 'bold' }}>Entrar</Typography>
-                            <TextField id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth value={usuarioLogin.usuario} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}> </TextField>
-                            <TextField id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth value={usuarioLogin.senha} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)} > </TextField>
-                            <Box marginTop={2} textAlign={'center'}>
+                            <Typography 
+                            variant="h3" 
+                            gutterBottom color="textPrimary" 
+                            component="h3" align="center" 
+                            className="textos1">
+                                Entrar
+                            </Typography>
 
-                                <Button type='submit' variant='contained' color='primary' >
-                                    Logar
-                                </Button>
+                            <TextField 
+                            value={userLogin.usuario} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} 
+                            id="usuario" 
+                            label="Endereço de e-mail" 
+                            type="email" 
+                            name="usuario" 
+                            margin="normal" 
+                            fullWidth />
 
+                            <TextField 
+                            value={userLogin.senha} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} 
+                            id="senha" 
+                            // error={usuarioLogin.senha.length < 8 && usuarioLogin.senha.length > 0} 
+                            // helperText= {usuarioLogin.senha.length < 8 && usuarioLogin.senha.length > 0 ?'mínimo 8 caracteres' : ''}
+                            label="Senha" 
+                            variant="outlined" 
+                            name="senha" 
+                            margin="normal" 
+                            type="password" 
+                            fullWidth />
+
+                            <Box marginTop={2} textAlign="center">
+                                    <Button type="submit" variant="contained" color="primary">
+                                        Logar
+                                    </Button>
                             </Box>
                         </form>
-                        <Box display='flex' justifyContent='center' marginTop={2}>
+                        <Box display="flex" justifyContent="center" marginTop={2}>
                             <Box marginRight={1}>
-                                <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
+                                <Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta?</Typography>
                             </Box>
-                            <Link to='/cadastrousuario'>
-                                <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+                            <Link to="/cadastro">
+                                <Typography variant="subtitle1" gutterBottom align="center" className="textos1">Cadastre-se </Typography>
                             </Link>
-
                         </Box>
                     </Box>
                 </Grid>
-                <Grid className='imageLogin' item xs={6}>  </Grid>
             </Grid>
+
         </>
     )
 }
 
-export default Login
+export default Login 

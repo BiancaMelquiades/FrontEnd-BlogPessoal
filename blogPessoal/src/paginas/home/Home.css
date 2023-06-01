@@ -1,0 +1,27 @@
+/* .ImagemTelaInicial {
+    background-image: url('../../assets/imagens/runScrum.png') !important;
+    background-repeat: no-repeat;
+    width: 1333px;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+} */
+
+.caixa {
+    background-color: #011613;
+}
+
+.titulo {
+    color: #F3F0F1 !important;
+    font-weight: "bold";
+}
+
+.botao {
+    border-color: #FCA311 !important;
+    background-color: "#01605B"; 
+    color: #FCA311 !important;
+}
+
+.postagens {
+    background-color: #F3F0F1;
+}
