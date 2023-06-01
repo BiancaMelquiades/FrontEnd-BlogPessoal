@@ -4,17 +4,22 @@ import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import "./Navbar.css"
+import { useDispatch, useSelector } from '../../../../node_modules/react-redux/es/exports';
+import { addToken } from '../../../store/tokens/actions';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function Navbar() {
-    const { token, setToken } = useLocalStorage('token');
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
     let navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    function goLogout() {
-        setToken('')
-        alert("usuário deslogado")
-        navigate('/login')
+    function goLogout(){
+        dispatch(addToken(""));
+        alert("Usuário deslogado")
+        navigate("/login")
     }
-
     return (
         <>
             <AppBar position="static" className="customAppBar">
