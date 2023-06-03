@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Home.css';
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
+import { Link, useNavigate } from 'react-router-dom';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import { useSelector as customUseSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import ListaPostagem from '../../components/postagens/listapostagem/ListaPostagem';
 
-function Home() {
+    function Home() {
+
+        let navigate = useNavigate();
+        const token = customUseSelector<TokenState, TokenState["tokens"]>(
+            (state) => state.tokens
+        );
+    
+        useEffect(() => {
+            if (token == "") {
+                toast.error("Você precisa estar logado", {
+                    position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                });
+                navigate("/login")
+    
+            }
+        }, [token])
+
     return (
         <>
             <Grid
@@ -25,9 +54,12 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}></Box>
+                            <ModalPostagem/>
+                        <Link to="/posts">
                         <Button variant="outlined" className="botao">
                             Ver Postagens
                         </Button>
+                        </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6}>
@@ -42,3 +74,6 @@ function Home() {
 }
 
 export default Home;
+function useSelector<T>(arg0: (state: any) => any) {
+    throw new Error('Function not implemented.');
+}

@@ -2,15 +2,19 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import './Login.css';
 import { Grid, Box, Typography, TextField, Button } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-import { Repeat } from '@material-ui/icons';
 import UserLogin from '../../models/UserLogin';
 import { login } from '../../services/Service';
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/actions';
 
-function Login() {
+
+
+function Login () {
     const navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token'); //faz o controle do token dentro do localStorage
-    const [userLogin, setUserLogin] = useState<UserLogin>({
+    const dispatch = useDispatch();
+    const [token, setToken] = useState("");
+    const [userLogin, setUserLogin] = useState<UserLogin>(
+        {
 
         id: 0,          //valores zerados, pois não foi feito nenhum cadastro/login
         usuario: '',
@@ -29,6 +33,7 @@ function Login() {
 
     useEffect(() => {
         if (token != '') {
+            dispatch(addToken(token))
             navigate('/home')
         }
     }, [token])
@@ -93,7 +98,7 @@ function Login() {
                             <Box marginRight={1}>
                                 <Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta?</Typography>
                             </Box>
-                            <Link to="/cadastro">
+                            <Link to="/cadastroUsuario">
                                 <Typography variant="subtitle1" gutterBottom align="center" className="textos1">Cadastre-se </Typography>
                             </Link>
                         </Box>

@@ -1,5 +1,5 @@
-.imagem {
-    background-image: url("https://ik.imagekit.io/biancamelquiades/Blog_Pessoal/runScrum.png?updatedAt=1684936133541");
+.imagem2 {
+    background-image: url(https://ik.imagekit.io/projetovoztech/lucas-lima-nG5QjJFcHVU-unsplash.jpg?updatedAt=1684763924959); 
     background-repeat: no-repeat; 
     width: 100vh; 
     min-height: 100vh; 
@@ -7,15 +7,47 @@
     background-position: center;
 }
 
-.textos1 {
-    font-weight: bold !important;
+.textos2 {
+    font-family: 'Sigmar', cursive !important;
 }
 
-.text-decorator-none{
-    text-decoration: none !important;
-}
-
-.btnCancelar{
+.btnCancelar {
     margin-right: 20px !important;
+    color: #EFE6E6 !important;
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #353535 !important
+}
 
+.btnCadastro {
+    font-family: 'Roboto', sans-serif !important;
+    color: #EFE6E6 !important;
+    background-color: #353535 !important;
+}
+
+.btnCadastro:hover, .btnCancelar:hover{
+    background-color: #EFE6E6 !important;
+    color: #353535 !important;
+    font-weight: bolder !important;
+}
+
+.formulario2 {
+    
+    background-color: #fdfdfd86;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 10px;
+    width: 300px;
+    height: 550px;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 120px;
+    display: flex;
+}
+
+/* .ajuste{
+
+} */
+
+.espaco{
+    background-color: #35353548;
 }
